@@ -23,11 +23,14 @@ router.get(`/:id`,async (req,res)=>{
  
 })
 
-router.post(`/`,async(req,res)=>{
+router.post(`/register`,async(req,res)=>{
+
+	
+
    let user=new User({
        name:req.body.name,
        email:req.body.email,
-       passwordHash:bcrypt.hashSync(req.body.passwordHash,10),
+       passwordHash:await bcrypt.hashSync(req.body.passwordHash,10),
        phone:req.body.phone,
        isAdmin:req.body.isAdmin,
        street:req.body.street,
